@@ -6,7 +6,9 @@
 package pl.polsl.java.Bartlomiej.Szostek.views;
 
 /**
- *
+ * This view is obligated to provide high 
+ * user-experience interface during the game.
+ * 
  * @author Bartek
  */
 public class InGameView {

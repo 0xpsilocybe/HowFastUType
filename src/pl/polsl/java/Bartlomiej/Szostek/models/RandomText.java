@@ -7,16 +7,16 @@ import java.util.Random;
  *
  * @author Bartek
  */
-public class RandomTextModel {
+public class RandomText {
     private final int maxWordLen;
     private final int numOfWords;
 
-    public RandomTextModel() {
+    public RandomText() {
         this.maxWordLen = 10;
         this.numOfWords = 40;
     }
 
-    public RandomTextModel(int maxWordLength, int numberOfWords) {
+    public RandomText(int maxWordLength, int numberOfWords) {
         this.maxWordLen = maxWordLength;
         this.numOfWords = numberOfWords;
     }
