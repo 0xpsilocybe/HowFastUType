@@ -3,6 +3,7 @@ package pl.polsl.java.Bartlomiej.Szostek.controllers;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import pl.polsl.java.Bartlomiej.Szostek.views.MainView;
 
 /**
@@ -73,14 +74,19 @@ public class UserInput {
      * and passes it to corresponding view or controller.
      */
     public void start() {
-        Scanner scanUserInput = new Scanner(System.in); 
+        Scanner scanUserInput = new Scanner(System.in);
+        String regexOptions = new String("[1-3]");
         int userOption = 0;
         
         do {
             mainView.displayMenu();
             try {
+                while(!scanUserInput.hasNext(regexOptions)) {
+                    mainView.displayBadOptionWarning();
+                    scanUserInput.nextLine();
+                }
+                
                 userOption = scanUserInput.nextInt();
-
                 switch (userOption) {
                     case 1:
                         startGame();
@@ -95,7 +101,7 @@ public class UserInput {
                         break;
                 }
             } catch(InputMismatchException ex) {
-                System.out.format("%nPlease select 1, 2 or 3.");
+                mainView.displayBadOptionWarning();
                 scanUserInput.reset();
             } catch (IOException ex) {
                 mainView.displayException("IOException", ex.getMessage());

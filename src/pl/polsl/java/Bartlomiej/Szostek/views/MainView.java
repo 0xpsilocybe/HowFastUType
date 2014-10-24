@@ -30,6 +30,12 @@ public class MainView {
         System.out.format("%nYour option: ");
     }
     
+    
+    public void displayBadOptionWarning() {
+        System.out.format("%nPlease select 1, 2 or 3.");
+        System.out.format("%nChoose again: ");
+    }
+    
     /**
      * Displays information about author.
      */
