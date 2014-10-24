@@ -3,7 +3,7 @@ package pl.polsl.java.Bartlomiej.Szostek.controllers;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Pattern;
+import pl.polsl.java.Bartlomiej.Szostek.models.RandomTextGenerator;
 import pl.polsl.java.Bartlomiej.Szostek.views.MainView;
 
 /**
@@ -115,8 +115,8 @@ public class UserInput {
      * Initializes and starts new "How f@st U Typ3" game.
      */
     public void startGame() {
-        
-        //TODO
-        
+        RandomTextGenerator randomTextGenenator = new RandomTextGenerator(maxWordLength, numberOfWords);
+        GameController newGame = new GameController(randomTextGenenator.generateText());
+        newGame.begin();
     }
 }

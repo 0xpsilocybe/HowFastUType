@@ -4,24 +4,43 @@ import java.lang.StringBuilder;
 import java.util.Random;
 
 /**
- *
+ * Gives functionality to generate new random text with specific parameters.
  * @author Bartek
  */
-public class RandomText {
+public class RandomTextGenerator {
+    /**
+     * Maximum length of single word - this is random.
+     */
     private final int maxWordLen;
+    /**
+     * Precise number of words in generated text.
+     */
     private final int numOfWords;
 
-    public RandomText() {
+    
+    /**
+     * Initializes instance of class with default values.
+     */
+    public RandomTextGenerator() {
         this.maxWordLen = 10;
         this.numOfWords = 40;
     }
 
-    public RandomText(int maxWordLength, int numberOfWords) {
+    /**
+     * Initializes instance of class with values given through parameters.
+     * @param maxWordLength Maximum length of single word - this is random.
+     * @param numberOfWords Precise number of words in generated text.
+     */
+    public RandomTextGenerator(int maxWordLength, int numberOfWords) {
         this.maxWordLen = maxWordLength;
         this.numOfWords = numberOfWords;
     }
     
-    public String GenerateText() {
+    /**
+     * Generates text with random length of words and random letters in single word.
+     * @return Randomly generated text.
+     */
+    public String generateText() {
         StringBuilder textBuilder = new StringBuilder();
         Random random = new Random();
         
@@ -32,6 +51,13 @@ public class RandomText {
         return textBuilder.toString();
     }
     
+    /**
+     * Generates single random word, with random capital first letter
+     * and with random ending like dot, colon or question mark.
+     * @param r Initialized Random class instance.
+     * @param last Defines if current word is last in text.
+     * @return Random word.
+     */
     private String getRandomWord(Random r, boolean last) {
         char sign;
         StringBuilder word = new StringBuilder(maxWordLen + 2);
