@@ -61,7 +61,7 @@ public class MainView {
      * This method has a hint parameter set default to null.
      * 
      * See more information at:
-     * {@link #displayException(String, String, String), displayException }
+     * {@link #displayException(String, String, String) displayException }
      * @param exceptionName Name of the exception thrown.
      * @param message Message included in the thrown exception.
      */
@@ -72,9 +72,9 @@ public class MainView {
     /**
      * Displays user-friendly information about exception that occured.
      * 
-     * @param exceptionName
-     * @param message
-     * @param hint 
+     * @param exceptionName Type name of the exception.
+     * @param message Message from exception.
+     * @param hint How to not invoke the exception again.
      */
     public void displayException(String exceptionName, String message, String hint ) {
         System.err.println("An exception occured!");

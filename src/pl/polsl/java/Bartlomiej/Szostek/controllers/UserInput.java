@@ -7,7 +7,9 @@ import pl.polsl.java.Bartlomiej.Szostek.models.RandomTextGenerator;
 import pl.polsl.java.Bartlomiej.Szostek.views.MainView;
 
 /**
- *
+ * Controller for the main window of the game. Controlls main menu and is 
+ * responsible for changing main views. After game starts, the controll is
+ * passed to the GameController, after game the control is passed back.
  * @author Bartłomiej Szostek
  */
 public class UserInput {
@@ -57,15 +59,18 @@ public class UserInput {
             mainView.displayException("ArrayIndexOutOfBoundsException",
                                        ex1.getMessage(), 
                                        "Too few arguments. See help.");
+            throw ex1;
         }
         catch (NumberFormatException ex2) {
             mainView.displayException("NumberFormatException",
                                       ex2.getMessage(),
                                       "Parameters should be integers.");
+            throw ex2;
         } 
         catch (IllegalArgumentException ex3) {
             mainView.displayException("IllegalArgumentException",
                                       ex3.getMessage());
+            throw ex3;
         }
     }
     
@@ -114,7 +119,7 @@ public class UserInput {
     /**
      * Initializes and starts new "How f@st U Typ3" game.
      */
-    public void startGame() {
+    public void startGame() throws IOException {
         RandomTextGenerator randomTextGenenator = new RandomTextGenerator(maxWordLength, numberOfWords);
         GameController newGame = new GameController(randomTextGenenator.generateText());
         newGame.begin();

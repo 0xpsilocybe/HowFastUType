@@ -3,10 +3,10 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 import pl.polsl.java.Bartlomiej.Szostek.controllers.UserInput;
         
 /**
- *
+ * This is where the program starts.
+ * 
  * @author Bartłomiej Szostek
  * @version 1.0 26 Oct 2014
- * 
  */
 public class EntryPoint {
 
@@ -19,7 +19,11 @@ public class EntryPoint {
      *    length of single word, that it can generate.
      */
     public static void main(String[] args) {
-        UserInput newGame = new UserInput(args);
-        newGame.start();
+        try {
+            UserInput newGame = new UserInput(args);
+            newGame.start();
+        } catch(Exception e) {
+            /* Exceptions are handled inside */
+        }
     }
 }

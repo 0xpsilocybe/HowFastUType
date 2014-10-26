@@ -1,7 +1,8 @@
 package pl.polsl.java.Bartlomiej.Szostek.models;
 
 /**
- *
+ * This model represents user input text during current game.
+ * It holds current index of the text, number of mistakes, etc.
  * @author Bartłomiej Szostek
  */
 public class TextModel {
