@@ -1,11 +1,10 @@
 package pl.polsl.java.Bartlomiej.Szostek.models;
 
-import java.lang.StringBuilder;
 import java.util.Random;
 
 /**
  * Gives functionality to generate new random text with specific parameters.
- * @author Bartek
+ * @author Bartłomiej Szostek
  */
 public class RandomTextGenerator {
     /**
@@ -77,16 +76,16 @@ public class RandomTextGenerator {
         if (last == true) {
             word.append('.');
         }
-        else if (sign > 10) {
+        else if (sign < 10) {
             word.append("! ");
         }
-        else if (sign > 20) {
+        else if (sign < 20) {
             word.append("? ");
         }
-        else if (sign > 40) {
+        else if (sign < 40) {
             word.append(". ");
         }
-        else if (sign > 50) {
+        else if (sign < 60) {
             word.append(", ");
         }
         else {

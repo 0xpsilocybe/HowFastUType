@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.polsl.java.Bartlomiej.Szostek.models;
 
 /**
  *
- * @author Bartek
+ * @author Bartłomiej Szostek
  */
 public class TextModel {
      
@@ -19,7 +14,7 @@ public class TextModel {
     /**
      * Represents text, that user will have to retype in current game.
      */
-    private String gameText;
+    private final String gameText;
 
     /**
      * Holds number of mistakes made by user

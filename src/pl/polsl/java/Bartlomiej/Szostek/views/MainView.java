@@ -2,8 +2,7 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 
 /**
  * This class provides simple UI for saying "hello" to user.
- * @author Bartek
- * @version 0.6 22 Oct 2014
+ * Bartłomiej Szostek
  */
 public class MainView {
     
@@ -30,7 +29,9 @@ public class MainView {
         System.out.format("%nYour option: ");
     }
     
-    
+    /**
+     * Displays warning, when user types in bad option argument.
+     */
     public void displayBadOptionWarning() {
         System.out.format("%nPlease select 1, 2 or 3.");
         System.out.format("%nChoose again: ");

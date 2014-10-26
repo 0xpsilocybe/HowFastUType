@@ -4,7 +4,7 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
  * This view is obligated to provide high 
  * user-experience interface during the game.
  * 
- * @author Bartek
+ * Bartłomiej Szostek
  */
 public class InGameView extends MainView {
 
@@ -17,15 +17,16 @@ public class InGameView extends MainView {
         
         System.out.format("%n%s%n", text);
         System.out.println("=================================================");
-        System.out.format("Type as fast as you can below:%n%n");
+        System.out.format("Type as fast as you can below and proceede with ENTER:%n%n");
     }
 
     /**
      * Displays result of the game.
      * @param numberOfMistakes Number of mistakes made by user.
      * @param textLength Length of text of past game.
+     * @param miliseconds Time took to finish the game.
      */
-    public void displayResult(int numberOfMistakes, int textLength) {
+    public void displayResult(int numberOfMistakes, int textLength, long miliseconds) {
         int percentage = (numberOfMistakes * 100) / textLength;
         
         System.out.format("%nGAME OVER!%n%n");
@@ -44,8 +45,9 @@ public class InGameView extends MainView {
         } 
         
         percentage = 100 - percentage;
-        System.out.format("%nYou misstyped %d characters.", numberOfMistakes);
-        System.out.format("That gives you %d%% accuracy.", percentage);
+        System.out.format("%nYou misstyped %d characters.%n", numberOfMistakes);
+        System.out.format("That gives you %d%% accuracy.%n", percentage);
+        System.out.format("It took you %d miliseconds.", miliseconds);
     }
     
 }

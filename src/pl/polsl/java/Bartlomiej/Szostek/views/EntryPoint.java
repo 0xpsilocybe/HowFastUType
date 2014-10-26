@@ -4,8 +4,8 @@ import pl.polsl.java.Bartlomiej.Szostek.controllers.UserInput;
         
 /**
  *
- * @author Bartek
- * @version 0.1 22 Oct 2014
+ * @author Bartłomiej Szostek
+ * @version 1.0 26 Oct 2014
  * 
  */
 public class EntryPoint {

@@ -8,7 +8,7 @@ import pl.polsl.java.Bartlomiej.Szostek.views.MainView;
 
 /**
  *
- * @author Bartek
+ * @author Bartłomiej Szostek
  */
 public class UserInput {
     /**
@@ -75,7 +75,7 @@ public class UserInput {
      */
     public void start() {
         Scanner scanUserInput = new Scanner(System.in);
-        String regexOptions = new String("[1-3]");
+        String regexOptions = "[1-3]";
         int userOption = 0;
         
         do {
