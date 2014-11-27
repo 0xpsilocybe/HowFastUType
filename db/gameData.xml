@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><root xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com gameDataSchema.xsd">
+	<users>
+		<user>
+			<name>Bartek</name>
+		</user>
+		
+		<user>
+			<name>Andrzej</name>
+		</user>
+	<user><name>NowyUser</name></user></users>
+	<highscores>
+		<user nick="Bartek">
+			<casual>
+				<score>
+					<points>100</points>
+					<time>10000</time>
+					<accuracy>90.2</accuracy>
+				</score>
+				<score>
+					<points>90</points>
+					<time>14000</time>
+					<accuracy>88.2</accuracy>
+				</score>
+				<score>
+					<points>200</points>
+					<time>9000</time>
+					<accuracy>100</accuracy>
+				</score>
+			<score><points>67</points><time>12000</time><accuracy>78.3</accuracy></score><score><points>7</points><time>14408</time><accuracy>100.0</accuracy></score><score><points>897</points><time>11148</time><accuracy>100.0</accuracy></score></casual>
+			<marathon>
+				<score>
+					<points>100</points>
+					<time>10000</time>
+					<accuracy>90.2</accuracy>
+				</score>
+				<score>
+					<points>90</points>
+					<time>14000</time>
+					<accuracy>88.2</accuracy>
+				</score>
+				<score>
+					<points>200</points>
+					<time>9000</time>
+					<accuracy>100</accuracy>
+				</score>
+			</marathon>
+			<reaction>
+				<score>
+					<points>100</points>
+					<time>10000</time>
+					<accuracy>90.2</accuracy>
+				</score>
+				<score>
+					<points>90</points>
+					<time>14000</time>
+					<accuracy>88.2</accuracy>
+				</score>
+				<score>
+					<points>200</points>
+					<time>9000</time>
+					<accuracy>100</accuracy>
+				</score>
+			</reaction>
+		</user>
+		
+		
+		
+		<user nick="Andrzej">
+			<casual>
+				
+				
+								
+			</casual>
+			<marathon>
+				
+			</marathon>
+			<reaction>
+				
+				
+				
+			</reaction>
+		</user>
+	<user nick="NowyUser"><casual/><marathon/><reaction/></user></highscores>
+</root>

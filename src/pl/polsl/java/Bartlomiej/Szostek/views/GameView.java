@@ -1,12 +1,22 @@
 package pl.polsl.java.Bartlomiej.Szostek.views;
 
+import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
+
 /**
  * This view is obligated to provide high 
  * user-experience interface during the game.
  * 
  * Bartłomiej Szostek
  */
-public class InGameView extends MainView {
+@ClassPreamble(
+        author = "Bartłomiej Szostek",
+        date = "24/10/14",
+        lastModifiedDate = "23/11/14",
+        version = 1.1,
+        description = "This view is obligated to provide high " +
+                      "user-experience interface during the game."
+)
+public class GameView extends MainView {
 
     /**
      * Displays generated text for user.
@@ -21,14 +31,19 @@ public class InGameView extends MainView {
     }
 
     /**
+     * Displays info when some feature is not yet implemented.
+     */
+    public void displayNotImplemented() {
+        System.out.format("%nSorry.%nThis game mode is not yet implemented.%n");
+    }
+    
+    /**
      * Displays result of the game.
      * @param numberOfMistakes Number of mistakes made by user.
-     * @param textLength Length of text of past game.
+     * @param percentage  Accuracy percentage.
      * @param miliseconds Time took to finish the game.
      */
-    public void displayResult(int numberOfMistakes, int textLength, long miliseconds) {
-        int percentage = (numberOfMistakes * 100) / textLength;
-        
+    public void displayResult(int numberOfMistakes, double percentage, long miliseconds) {
         System.out.format("%nGAME OVER!%n%n");
         if(numberOfMistakes == 0) {
             System.out.print("PERFECT!");
@@ -44,9 +59,8 @@ public class InGameView extends MainView {
             System.out.print("LEARN TO TYPE!");
         } 
         
-        percentage = 100 - percentage;
         System.out.format("%nYou misstyped %d characters.%n", numberOfMistakes);
-        System.out.format("That gives you %d%% accuracy.%n", percentage);
+        System.out.format("That gives you %f%% accuracy.%n", percentage);
         System.out.format("It took you %d miliseconds.", miliseconds);
     }
     

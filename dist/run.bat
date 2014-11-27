@@ -1,1 +1,1 @@
-java -jar "JavaLab.jar" 5 5
+java -jar "JavaLab.jar" Bartek 5 5

@@ -1,22 +1,26 @@
 package pl.polsl.java.Bartlomiej.Szostek.models;
 
 import java.util.Random;
+import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 
-/**
- * Gives functionality to generate new random text with specific parameters.
- * @author Bartłomiej Szostek
- */
+@ClassPreamble(
+        author = "Bartłomiej Szostek",
+        date = "24/10/14",
+        lastModifiedDate = "23/11/14",
+        version = 1.1,
+        description = "Gives functionality to generate new random text with specific parameters."
+)
 public class RandomTextGenerator {
     /**
      * Maximum length of single word - this is random.
      */
     private final int maxWordLen;
+    
     /**
      * Precise number of words in generated text.
      */
     private final int numOfWords;
 
-    
     /**
      * Initializes instance of class with default values.
      */
@@ -63,11 +67,11 @@ public class RandomTextGenerator {
         int len = r.nextInt(maxWordLen) + 1;
         
         for (int i = 0; i < len; i++) {     
-            if ((i == 0) && (r.nextInt(100) > 80)) {
-                sign = (char) (r.nextInt(26) + 'a');
+            if ((i == 0) && (r.nextInt(100) > 20)) {
+                sign = (char) (r.nextInt(26) + 'A');
             }
             else {
-                sign = (char) (r.nextInt(26) + 'A');
+                sign = (char) (r.nextInt(26) + 'a');
             }
             word.append(sign);
         }

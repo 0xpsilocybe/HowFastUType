@@ -1,13 +1,15 @@
 package pl.polsl.java.Bartlomiej.Szostek.views;
 
+import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 import pl.polsl.java.Bartlomiej.Szostek.controllers.UserInput;
         
-/**
- * This is where the program starts.
- * 
- * @author Bartłomiej Szostek
- * @version 1.0 26 Oct 2014
- */
+@ClassPreamble(
+        author = "Bartłomiej Szostek",
+        date = "24/10/14",
+        lastModifiedDate = "26/11/14",
+        version = 1.1,
+        description = "This is where the program starts."
+)
 public class EntryPoint {
 
     /**
