@@ -1,10 +1,6 @@
 package pl.polsl.java.Bartlomiej.Szostek.controllers;
 
-import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
-import pl.polsl.java.Bartlomiej.Szostek.models.User;
 import pl.polsl.java.Bartlomiej.Szostek.views.HighscoresViewGui;
         
 @ClassPreamble (
@@ -14,7 +10,7 @@ import pl.polsl.java.Bartlomiej.Szostek.views.HighscoresViewGui;
         version = 1.1,
         description = "Controls highscores viewing."
 )
-public class HighscoresGui {
+public class HighscoresGui extends ControllerBase {
     /**
      * View for highscores tables.
      */

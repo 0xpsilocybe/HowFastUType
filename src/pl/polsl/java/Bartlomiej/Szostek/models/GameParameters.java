@@ -10,22 +10,22 @@ import pl.polsl.java.Bartlomiej.Szostek.controllers.UserXmlDB;
         version = 1.0,
         description = "Contains parameters for game controller."
 )
-public class GameParameters {
+public class GameParameters extends ModelBase {
     
     /**
      * Current user name.
      */
-    private final String userName;
+    private String userName;
     
     /**
      * Maximum length of single word in current game.
      */
-    private final int maxWordLength;
+    private int maxWordLength;
     
     /**
      * Number of words in current game.
      */
-    private final int numberOfWords;
+    private int numberOfWords;
 
     /**
      * Initializes game parameters with given values.
@@ -49,11 +49,22 @@ public class GameParameters {
     }
     
     /**
-     * Get curren user name.
+     * Get current user name.
      * @return User name.
      */
     public final String getUserName() {
         return this.userName;
+    }
+    
+    /**
+     * Sets new user name.
+     * @param newUserName User name.
+     */
+    public final void setUserName(String newUserName) {
+        String oldValue = this.userName;
+        this.userName = newUserName;
+        
+        firePropertyChange("UserName", oldValue, newUserName);
     }
     
     /**
@@ -65,10 +76,32 @@ public class GameParameters {
     }
     
     /**
+     * Sets new max word length;
+     * @param newMaxLength Max word length.
+     */
+    public final void setMaxWordLength(int newMaxLength) {
+        int oldValue = this.maxWordLength;
+        this.maxWordLength = newMaxLength;
+        
+        firePropertyChange("MaxWordLength", oldValue, newMaxLength);
+    }    
+    
+    /**
      * Return number of words.
      * @return Number of words.
      */
     public final int getNumberOfWords() {
         return this.numberOfWords;
+    }
+        
+    /**
+     * Sets new number of words.
+     * @param newNumberOfWords Number of words.
+     */
+    public final void setNumberOfWords(int newNumberOfWords) {
+        int oldValue = this.numberOfWords;
+        this.numberOfWords = newNumberOfWords;
+        
+        firePropertyChange("NumberOfWords", oldValue, newNumberOfWords);
     }
 }

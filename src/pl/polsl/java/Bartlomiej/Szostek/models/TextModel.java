@@ -11,7 +11,7 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
                 "This model represents user input text during current game." +
                 "It holds current index of the text, number of mistakes, etc."
 )
-public class TextModel {
+public class TextModel extends ModelBase {
      
     /**
      * Holds position of index in game text.

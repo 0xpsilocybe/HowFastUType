@@ -15,10 +15,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
-import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
-import pl.polsl.java.Bartlomiej.Szostek.models.InvalidUserNameException;
-import pl.polsl.java.Bartlomiej.Szostek.models.Score;
-import pl.polsl.java.Bartlomiej.Szostek.models.User;
+import pl.polsl.java.Bartlomiej.Szostek.models.*;
 
 @ClassPreamble (
         author = "Bartłomiej Szostek",

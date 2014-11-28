@@ -10,7 +10,7 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         version = 1.1,
         description = "Gives functionality to generate new random text with specific parameters."
 )
-public class RandomTextGenerator {
+public class RandomTextGenerator extends ModelBase {
     /**
      * Maximum length of single word - this is random.
      */

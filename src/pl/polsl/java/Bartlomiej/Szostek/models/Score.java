@@ -9,21 +9,21 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         version = 1.0,
         description = "This model represents single score."
 )
-public class Score {
+public class Score extends ModelBase {
     /**
      * Points gained in this game.
      */
-    private final int points;
+    private int points;
     
     /**
      * The time in witch the game was completed.
      */
-    private final int timeInMiliseconds;
+    private int timeInMiliseconds;
     
     /**
      * Accuracy achieved in game.
      */
-    private final double accuracy;
+    private double accuracy;
 
     /**
      * Creates single score instance.
@@ -53,6 +53,17 @@ public class Score {
     }
     
     /**
+     * Sets points.
+     * @param points Points.
+     */
+    public final void setPoints(int points) {
+        int oldValue = this.points;
+        this.points = points;
+        
+        firePropertyChange("Points", oldValue, points);
+    }
+    
+    /**
      * Get time.
      * @return Time.
      */
@@ -61,11 +72,33 @@ public class Score {
     }
     
     /**
+     * Sets time.
+     * @param miliseconds New time in miliseconds.
+     */
+    public final void setTime(int miliseconds) {
+        int oldValue = this.timeInMiliseconds;
+        this.timeInMiliseconds = miliseconds;
+        
+        firePropertyChange("timeInMiliseconds", oldValue, miliseconds);
+    }    
+    
+    /**
      * Get accuracy.
      * @return Accuracy.
      */
     public final double getAccuracy() {
         return this.accuracy;
+    }    
+    
+    /**
+     * Sets accuracy.
+     * @param accuracy New accuracy.
+     */
+    public final void setAccuracy(double accuracy) {
+        double oldValue = this.accuracy;
+        this.accuracy = accuracy;
+        
+        firePropertyChange("Accuracy", oldValue, accuracy);
     }
     
     @Override

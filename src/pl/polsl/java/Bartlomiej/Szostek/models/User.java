@@ -16,7 +16,7 @@ public class User extends ModelBase {
     /**
      * String representation of user nickname.
      */
-    private final String userName;
+    private String userName;
 
     /**
      * List of scores of current user achieved in casual game mode.
@@ -50,6 +50,17 @@ public class User extends ModelBase {
     }
       
     /**
+     * Sets user name.
+     * @param newUserName New user name.
+     */
+    public final void setUserName(String newUserName) {
+        String oldValue = this.userName;
+        this.userName = newUserName;
+        
+        firePropertyChange("userName", oldValue, newUserName);
+    }    
+    
+    /**
      * Get scores from Casual game mode.
      * @return Casual game mode scores.
      */
@@ -62,7 +73,10 @@ public class User extends ModelBase {
      * @param scores Score list.
      */
     public final void setCasualScores(List<Score> scores) {
+        List<Score> oldValue = this.casualScoreList;
         this.casualScoreList = scores;
+        
+        firePropertyChange("casualScoreList", oldValue, scores);
     }
     
     /**
@@ -78,7 +92,10 @@ public class User extends ModelBase {
      * @param scores Score list.
      */
     public final void setMarathonScores(List<Score> scores) {
+        List<Score> oldValue = this.marathonScoreList;
         this.marathonScoreList = scores;
+        
+        firePropertyChange("marathonScoreList", oldValue, scores);
     }
     
     /**
@@ -94,6 +111,9 @@ public class User extends ModelBase {
      * @param scores Score list.
      */
     public final void setReactionScores(List<Score> scores) {
+        List<Score> oldValue = this.reactionScoreList;
         this.reactionScoreList = scores;
+        
+        firePropertyChange("reactionScoreList", oldValue, scores);
     }
 }
