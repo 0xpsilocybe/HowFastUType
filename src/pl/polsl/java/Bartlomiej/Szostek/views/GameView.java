@@ -2,12 +2,6 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 
-/**
- * This view is obligated to provide high 
- * user-experience interface during the game.
- * 
- * Bartłomiej Szostek
- */
 @ClassPreamble(
         author = "Bartłomiej Szostek",
         date = "24/10/14",
