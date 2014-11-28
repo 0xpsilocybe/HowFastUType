@@ -291,7 +291,7 @@ public class UserXmlDB implements UserManagement{
 
     @Override
     public User getUser(String nickname) {
-        User userData = new User();
+        User userData = new User(nickname);
         
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -302,10 +302,11 @@ public class UserXmlDB implements UserManagement{
             parser.parse(database, handler);
             
             if(handler.isUserFound()) {
-                userData.setUserName(nickname);
                 userData.setCasualScores(handler.getCasualScores());
                 userData.setMarathonScores(handler.getMarathonScores());
                 userData.setReactionScores(handler.getReactionScores());
+            } else {
+                userData = null;
             }
         } catch(SAXException e1) {
             System.err.println("XML parser exception - probably XML file was corrupted.");

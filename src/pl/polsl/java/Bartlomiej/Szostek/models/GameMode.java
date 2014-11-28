@@ -1,6 +1,5 @@
 package pl.polsl.java.Bartlomiej.Szostek.models;
 
-import java.util.EnumSet;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 
 @ClassPreamble(

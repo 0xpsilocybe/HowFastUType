@@ -78,7 +78,7 @@ public class WelcomeScreenGui extends JPanel {
         
         newUserBtn = new JButton("<html><center><font size=+2 color=#000000><b>New user</b></font>");        
         existingUserBtn = new JButton("<html><center><font size=+2 color=#000000<b>Existing user</b></font>");   
-        highscoresBtn = new JButton("<html><center><font size=+2 color=#000000><b>Highscores</b></font>");
+        highscoresBtn = new JButton("<html><center><font size=+2 color=#000000><b>Hall of Fame</b></font>");
         
         int gap = width / 3;
         GroupLayout layout = new GroupLayout(this);

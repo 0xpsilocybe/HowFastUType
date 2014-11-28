@@ -12,11 +12,11 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         version = 1.0,
         description = "This model represents user and his highscores table."
 )
-public class User {
+public class User extends ModelBase {
     /**
      * String representation of user nickname.
      */
-    private String userName;
+    private final String userName;
 
     /**
      * List of scores of current user achieved in casual game mode.
@@ -32,12 +32,6 @@ public class User {
      * List of scores of current user achieved in reaction game mode.
      */
     private List<Score> reactionScoreList = new ArrayList<Score>();
-
-    /**
-     * Creates blank user instantion.
-     */
-    public User() {
-    }
     
     /**
      * Creates user instatnion.
@@ -54,15 +48,7 @@ public class User {
     public final String getUserName() {
         return this.userName;
     }
-    
-    /**
-     * Set user name.
-     * @param nickname User nickname.
-     */
-    public final void setUserName(String nickname) {
-        this.userName = nickname;
-    }
-    
+      
     /**
      * Get scores from Casual game mode.
      * @return Casual game mode scores.

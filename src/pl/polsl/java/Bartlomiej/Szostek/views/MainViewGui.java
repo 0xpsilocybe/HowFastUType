@@ -14,9 +14,20 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 )
 public class MainViewGui extends JFrame {
 
-    private final int width = 1000;
-    private final int height = 700;
+    /**
+     * Width of game window.
+     */
+    private final int width = 1024;
     
+    /**
+     * * Height of game window.
+     */
+    private final int height = 768;
+    
+    
+    /**
+     * Constructor.
+     */
     public MainViewGui() {
         super("How f@st U typ3?");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,16 +36,9 @@ public class MainViewGui extends JFrame {
         panel.printComponents(null);
         add(panel);
         
-        // Fullscreen without top frame
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //setUndecorated(true);
-        
         setSize(width, height);
         setBackground(Color.BLACK);
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-    
-    
 }

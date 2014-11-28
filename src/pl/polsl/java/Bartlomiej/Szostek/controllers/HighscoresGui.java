@@ -1,0 +1,59 @@
+package pl.polsl.java.Bartlomiej.Szostek.controllers;
+
+import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
+import pl.polsl.java.Bartlomiej.Szostek.models.User;
+import pl.polsl.java.Bartlomiej.Szostek.views.HighscoresViewGui;
+        
+@ClassPreamble (
+        author = "Bartłomiej Szostek",
+        date = "24/10/14",
+        lastModifiedDate = "23/11/14",
+        version = 1.1,
+        description = "Controls highscores viewing."
+)
+public class HighscoresGui {
+    /**
+     * View for highscores tables.
+     */
+    private final HighscoresViewGui view;
+    
+    /**
+     * List of users and their highscores table.
+     */
+    private String currentUserName;
+
+    /**
+     * Creates instance of highscores controller
+     */
+    public HighscoresGui() {
+        view = new HighscoresViewGui(null, null);
+    }
+
+    /**
+     * Creates instance of highscores controller.
+     * @param currentUserName Current user name.
+     */
+    public HighscoresGui(String currentUserName) {
+        view = new HighscoresViewGui(currentUserName, null);
+        
+        this.currentUserName = currentUserName;
+    }
+    
+    /**
+     * Shows highscores.
+     */
+    public void showHighscores() {
+        
+    }
+    
+    /**
+     * Set current user name.
+     * @param nick User name.
+     */
+    public final void setCurrentUserName(String nick) {
+        this.currentUserName = nick;
+    }
+}
