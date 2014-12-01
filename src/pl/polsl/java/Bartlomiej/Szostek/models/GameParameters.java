@@ -27,6 +27,10 @@ public class GameParameters {
      */
     private int numberOfWords;
 
+    /** Default contructor */
+    public GameParameters() {
+    }
+
     /**
      * Initializes game parameters with given values.
      * @param nick User nickname.

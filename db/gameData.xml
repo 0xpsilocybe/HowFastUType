@@ -7,7 +7,7 @@
 		<user>
 			<name>Andrzej</name>
 		</user>
-	<user><name>NowyUser</name></user><user><name>superuser</name></user></users>
+	<user><name>NowyUser</name></user><user><name>superuser</name></user><user><name>qwerqwt</name></user><user><name>admin</name></user><user><name>bartelemi</name></user></users>
 	<highscores>
 		<user nick="Bartek">
 			<casual>
@@ -80,5 +80,5 @@
 				
 			</reaction>
 		</user>
-	<user nick="NowyUser"><casual/><marathon/><reaction/></user><user nick="superuser"><casual/><marathon/><reaction/></user></highscores>
+	<user nick="NowyUser"><casual/><marathon/><reaction/></user><user nick="superuser"><casual/><marathon/><reaction/></user><user nick="qwerqwt"><casual/><marathon/><reaction/></user><user nick="admin"><casual/><marathon/><reaction/></user><user nick="bartelemi"><casual/><marathon/><reaction/></user></highscores>
 </root>

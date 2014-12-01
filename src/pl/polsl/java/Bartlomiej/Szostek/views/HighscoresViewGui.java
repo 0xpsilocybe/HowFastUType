@@ -87,7 +87,7 @@ public class HighscoresViewGui extends ViewPanelBase {
         backBtn = new JButton();
         clearHighscoresBtn = new JButton();
         scrollbar = new JScrollPane();
-        listOfUsers = new JComboBox<String>(new DefaultComboBoxModel<String>());
+        listOfUsers = new JComboBox<String>();
         for(String user : controller.getUsersList()) {
             listOfUsers.addItem(user);
         }
@@ -130,7 +130,7 @@ public class HighscoresViewGui extends ViewPanelBase {
                             .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(150, 150, 150)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

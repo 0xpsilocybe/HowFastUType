@@ -5,18 +5,21 @@
             <url>src/pl/polsl/java/Bartlomiej/Szostek/controllers/GameController.java</url>
             <bookmark id="1">
                 <name/>
-                <line>68</line>
+                <line>51</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/models/User.java</file>
-            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/controllers/HighscoresGui.java</file>
+            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/models/GameParameters.java</file>
+            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/models/GameMode.java</file>
+            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/views/MainViewGui.java</file>
+            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/models/Score.java</file>
             <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/views/HighscoresViewGui.java</file>
             <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/controllers/MainController.java</file>
-            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/views/WelcomeScreenGui.java</file>
+            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/controllers/GameController.java</file>
+            <file>file:/C:/Users/Bartek/Desktop/JiPwSI/Projekt/JavaLab/src/pl/polsl/java/Bartlomiej/Szostek/views/GameViewGui.java</file>
         </group>
     </open-files>
 </project-private>

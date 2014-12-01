@@ -1,14 +1,13 @@
-    package pl.polsl.java.Bartlomiej.Szostek.controllers;
+package pl.polsl.java.Bartlomiej.Szostek.controllers;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.lang.annotation.*;
+import java.util.List;
 import java.util.Scanner;
 import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
 import pl.polsl.java.Bartlomiej.Szostek.models.GameParameters;
 import pl.polsl.java.Bartlomiej.Szostek.models.RandomTextGenerator;
 import pl.polsl.java.Bartlomiej.Szostek.models.TextModel;
-import pl.polsl.java.Bartlomiej.Szostek.views.GameView;
-import pl.polsl.java.Bartlomiej.Szostek.models.NotSupportedGameModeException;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 import pl.polsl.java.Bartlomiej.Szostek.models.Score;
 
@@ -19,7 +18,7 @@ import pl.polsl.java.Bartlomiej.Szostek.models.Score;
         version = 1.1,
         description = "Provides control for game flow."
 )
-public class GameController {
+public class GameController extends ControllerBase {
     
     /**
      * Text model for current game.
@@ -27,36 +26,22 @@ public class GameController {
     private TextModel textForThisGame = null;
     
     /**
-     * View providing UI during game.
-     */
-    private GameView view  = null;
-    
-    /**
      * Current game parameters.
      */
-    private final GameParameters gameParameters;
+    private GameParameters gameParameters = new GameParameters();
     
     /**
      * Current game mode.
      */
-    private final GameMode gameMode;
+    private GameMode gameMode;
     
-    /**
-     * Initializes instance of class with text for current game.
-     * @param gameMode Determinates game mode choosen by user.
-     * @param parameters Parameters of current game.
-     * @throws NotSupportedGameModeException
-     */ 
-    public GameController(GameMode gameMode, GameParameters parameters) 
-            throws NotSupportedGameModeException {
-        view = new GameView();
-        this.gameParameters = parameters;
-        this.gameMode = gameMode;
-        
+    /** Initializes game variables */
+    private void Initialize() {    
         switch(gameMode) {
             case CASUAL:
                 RandomTextGenerator randomTextGenenator = 
-                        new RandomTextGenerator(parameters.getMaxWordLength(), parameters.getNumberOfWords());
+                        new RandomTextGenerator(gameParameters.getMaxWordLength(),
+                        gameParameters.getNumberOfWords());
                 this.textForThisGame = new TextModel(randomTextGenenator.generateText());
                 break;
             case MARATHON:
@@ -64,8 +49,6 @@ public class GameController {
             case CASUAL_MULTI:
             case MARATHON_MULTI:
             case REACTION_MULTI:
-            default:
-                throw new NotSupportedGameModeException("This game mode is not yet supported!");
         }        
     }
 
@@ -76,31 +59,75 @@ public class GameController {
      * @throws IOException
      */
     public void begin() throws IOException {
-        Scanner scanUserInput = new Scanner(System.in);
+        Initialize();
         StringBuilder inputText = new StringBuilder();
         long timeStart = 0;
         long timeElapsed = 0;
         double accuracy = 0.0;
         
-        view.displayText(textForThisGame.getText());
-        
         timeStart = System.nanoTime();
-        while(inputText.length() < textForThisGame.getTextLength()) {
-            inputText.append(scanUserInput.nextLine());
-        }
+        
         timeElapsed = (System.nanoTime() - timeStart) / 1000000;
         
         textForThisGame.validateString(inputText.toString());
         
         accuracy = 100 - ((textForThisGame.getNumberOfMistakes() * 100) 
                  / textForThisGame.getTextLength());
-        view.displayResult(textForThisGame.getNumberOfMistakes(),
-                               accuracy,
-                               timeElapsed);
+        
         UserXmlDB manager = UserXmlDB.getInstance();
         manager.addScore(gameParameters.getUserName(), 
                          gameMode, 
                          new Score( (int) timeElapsed, accuracy));
-        System.in.read();
+    }
+
+    
+    /**
+     * Sets user name.
+     * @param nick User name.
+     */
+    public void setUserName(String nick) {
+        this.gameParameters.setUserName(nick);
+    }
+    
+    /**
+     * Sets max word length.
+     * @param wordLength Max word length.
+     */
+    public void setMaxWordLength(int wordLength) {
+        this.gameParameters.setMaxWordLength(wordLength);
+    }
+    
+    /**
+     * Sets words count.
+     * @param wordCount Words count.
+     */
+    public void setWordsCount(int wordCount) {
+        this.gameParameters.setNumberOfWords(wordCount);
+    }
+    
+    @Override
+    public void getControl(ControllerBase controller) {
+        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
+
+    public String[] getUsersList() {
+        UserXmlDB manager = UserXmlDB.getInstance();
+        List<String> list = manager.getUserNames();
+        String[] arr = new String[list.size()];
+        arr = list.toArray(arr);
+        return arr;
+    }
+
+    public GameMode[] getGameModes() {
+        return GameMode.values();
+    }
+
+    public void setGameMode(GameMode gameMode) {
+        this.gameMode = gameMode;
     }
 }

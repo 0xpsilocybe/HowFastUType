@@ -7,7 +7,6 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
 import pl.polsl.java.Bartlomiej.Szostek.models.Score;
 import pl.polsl.java.Bartlomiej.Szostek.models.User;
-import pl.polsl.java.Bartlomiej.Szostek.views.HighscoresViewGui;
         
 @ClassPreamble (
         author = "Bartłomiej Szostek",
@@ -20,15 +19,11 @@ public class HighscoresGui extends ControllerBase {
     
     public final String ELEMENT_USER_DATA = "currentUserData";
     
-    /** View for highscores tables. */
-    private final HighscoresViewGui view;
-
     /** Current user data. */
     private User currentUserData;
     
     /** Creates instance of highscores controller. */
     public HighscoresGui() {
-        view = new HighscoresViewGui(this);
         currentUserData = new User("");
     }
     

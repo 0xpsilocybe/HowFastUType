@@ -1,9 +1,12 @@
 package pl.polsl.java.Bartlomiej.Szostek.controllers;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
+import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
+import pl.polsl.java.Bartlomiej.Szostek.models.GameParameters;
+import pl.polsl.java.Bartlomiej.Szostek.models.InvalidUserNameException;
+import pl.polsl.java.Bartlomiej.Szostek.views.GameViewGui;
 import pl.polsl.java.Bartlomiej.Szostek.views.HighscoresViewGui;
 import pl.polsl.java.Bartlomiej.Szostek.views.MainViewGui;
 import pl.polsl.java.Bartlomiej.Szostek.views.WelcomeScreenGui;
@@ -18,7 +21,7 @@ import pl.polsl.java.Bartlomiej.Szostek.views.WelcomeScreenGui;
 public class MainController extends ControllerBase {
       
     public final String ELEMENT_NEWUSER_EVT = "NewUser";
-    public final String ELEMENT_EXISTINGUSER_EVT = "ExistingUser";
+    public final String ELEMENT_GAME_EVT = "Game";
     public final String ELEMENT_HIGHSCORES_EVT = "Highscores";
     
     /**
@@ -67,10 +70,10 @@ public class MainController extends ControllerBase {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(ELEMENT_NEWUSER_EVT.equals(e.getActionCommand())) {
-            
-        } else if(ELEMENT_EXISTINGUSER_EVT.equals(e.getActionCommand())) {
-            
+        if(ELEMENT_GAME_EVT.equals(e.getActionCommand())) {
+            GameController controller = new GameController();
+            setView(new GameViewGui(controller));
+            passControl(controller);
         } else if(ELEMENT_HIGHSCORES_EVT.equals(e.getActionCommand())) { 
             HighscoresGui controller = new HighscoresGui();
             setView(new HighscoresViewGui(controller));

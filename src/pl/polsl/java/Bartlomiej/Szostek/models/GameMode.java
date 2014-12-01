@@ -10,9 +10,9 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         description = "Model that represents game mode choosen by the player."
 )
 public enum GameMode {
-    CASUAL(1, "Casual"),
-    MARATHON(2, "Marathon"),
-    REACTION(3, "Reaction"),
+    CASUAL(1, "CASUAL"),
+    MARATHON(2, "MARATHON"),
+    REACTION(3, "REACTION"),
     CASUAL_MULTI(101, "Multi Casual"),
     MARATHON_MULTI(102, "Multi Marathon"),
     REACTION_MULTI(103, "Multi Reaction");

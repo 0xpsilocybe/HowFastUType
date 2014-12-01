@@ -63,7 +63,7 @@ public class WelcomeScreenGui extends ViewPanelBase {
      */
     private void initComponents() {
         newUserBtn = new JButton("<html><center><font size=+2 color=#000000><b>New user</b></font>");        
-        existingUserBtn = new JButton("<html><center><font size=+2 color=#000000<b>Existing user</b></font>");   
+        existingUserBtn = new JButton("<html><center><font size=+2 color=#000000<b>Game</b></font>");   
         highscoresBtn = new JButton("<html><center><font size=+2 color=#000000><b>Hall of Fame</b></font>");
         
         int gap = width / 3;
@@ -99,8 +99,7 @@ public class WelcomeScreenGui extends ViewPanelBase {
      * Initializes user interface events listeners.
      */
     private void addListeners() {
-        this.newUserBtn.setActionCommand(controller.ELEMENT_NEWUSER_EVT);
-        this.existingUserBtn.setActionCommand(controller.ELEMENT_EXISTINGUSER_EVT);
+        this.existingUserBtn.setActionCommand(controller.ELEMENT_GAME_EVT);
         this.highscoresBtn.setActionCommand(controller.ELEMENT_HIGHSCORES_EVT);
         
         this.newUserBtn.addActionListener((ActionEvent e) -> {
@@ -130,6 +129,7 @@ public class WelcomeScreenGui extends ViewPanelBase {
                             );
             }
         });
+        
         this.existingUserBtn.addActionListener(controller);
         this.highscoresBtn.addActionListener(controller);
     }
