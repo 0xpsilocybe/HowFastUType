@@ -36,30 +36,6 @@ public class MainController extends ControllerBase {
     }
     
     /**
-     * Get value of ELEMENT_NEWUSER_EVT.
-     * @return ELEMENT_NEWUSER_EVT value.
-     */
-    public final String getNewUserActionCommandName() {
-        return this.ELEMENT_NEWUSER_EVT;
-    }
-    
-        /**
-     * Get value of ELEMENT_EXISTINGUSER_EVT.
-     * @return ELEMENT_EXISTINGUSER_EVT value.
-     */
-    public final String getExistingUserActionCommandName() {
-        return this.ELEMENT_EXISTINGUSER_EVT;
-    }
-        
-    /**
-     * Get value of ELEMENT_HIGHSCORES_EVT.
-     * @return ELEMENT_HIGHSCORES_EVT value.
-     */
-    public final String getHighscoresActionCommandName() {
-        return this.ELEMENT_HIGHSCORES_EVT;
-    }
-    
-    /**
      * Sets new content for our view.
      * @param newView New content for view.
      */
@@ -96,8 +72,14 @@ public class MainController extends ControllerBase {
         } else if(ELEMENT_EXISTINGUSER_EVT.equals(e.getActionCommand())) {
             
         } else if(ELEMENT_HIGHSCORES_EVT.equals(e.getActionCommand())) { 
-            setView(new HighscoresViewGui(new HighscoresGui()),
-                    "How f@st U typ3? - Hall of Fame");
+            HighscoresGui controller = new HighscoresGui();
+            setView(new HighscoresViewGui(controller));
+            passControl(controller);
         }
+    }
+
+    @Override
+    public void getControl(ControllerBase controller) {
+        setView(new WelcomeScreenGui(this));
     }
 }

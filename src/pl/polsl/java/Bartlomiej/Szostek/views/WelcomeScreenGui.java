@@ -2,7 +2,6 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.beans.PropertyChangeEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
@@ -59,7 +58,7 @@ public class WelcomeScreenGui extends ViewPanelBase {
      * Initializes window components.
      */
     private void initComponents() {
-        newUserBtn = new JButton("<html><center><font size=+2 color=#FF0000><b>New user</b></font>");        
+        newUserBtn = new JButton("<html><center><font size=+2 color=#000000><b>New user</b></font>");        
         existingUserBtn = new JButton("<html><center><font size=+2 color=#000000<b>Existing user</b></font>");   
         highscoresBtn = new JButton("<html><center><font size=+2 color=#000000><b>Hall of Fame</b></font>");
         
@@ -96,9 +95,9 @@ public class WelcomeScreenGui extends ViewPanelBase {
      * Initializes user interface events listeners.
      */
     private void addListeners() {
-        this.newUserBtn.setActionCommand(controller.getNewUserActionCommandName());
-        this.existingUserBtn.setActionCommand(controller.getExistingUserActionCommandName());
-        this.highscoresBtn.setActionCommand(controller.getHighscoresActionCommandName());
+        this.newUserBtn.setActionCommand(controller.ELEMENT_NEWUSER_EVT);
+        this.existingUserBtn.setActionCommand(controller.ELEMENT_EXISTINGUSER_EVT);
+        this.highscoresBtn.setActionCommand(controller.ELEMENT_HIGHSCORES_EVT);
         
         this.newUserBtn.addActionListener(controller);
         this.existingUserBtn.addActionListener(controller);
@@ -109,9 +108,4 @@ public class WelcomeScreenGui extends ViewPanelBase {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
     }    
-
-    @Override
-    public void modelPropertyChange(PropertyChangeEvent event) {
-        
-    }
 }

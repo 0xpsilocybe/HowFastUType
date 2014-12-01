@@ -3,12 +3,10 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -18,8 +16,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 import pl.polsl.java.Bartlomiej.Szostek.controllers.HighscoresGui;
+import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
+import pl.polsl.java.Bartlomiej.Szostek.models.Score;
+import pl.polsl.java.Bartlomiej.Szostek.models.User;
 
 @ClassPreamble(
         author = "Bartłomiej Szostek",
@@ -40,7 +42,7 @@ public class HighscoresViewGui extends ViewPanelBase {
     private DefaultMutableTreeNode root;
     
     /** Custom scores node. */
-    private DefaultMutableTreeNode customNode;
+    private DefaultMutableTreeNode casualNode;
     
     /** Marathon scores node. */
     private DefaultMutableTreeNode marathonNode;
@@ -63,6 +65,9 @@ public class HighscoresViewGui extends ViewPanelBase {
     /** Dropdown list displaying  */
     private JComboBox<String> listOfUsers;
     
+    /** User data */
+    private User user;
+    
     /**
      * Initializes highscores view.
      * @param controller Controller for this view.
@@ -80,7 +85,6 @@ public class HighscoresViewGui extends ViewPanelBase {
     /** Initializes UI elements.
      */
     private void initComponents() {
-        
         headerLbl = new JLabel();
         scrollbar = new JScrollPane();
         backBtn = new JButton();
@@ -90,12 +94,10 @@ public class HighscoresViewGui extends ViewPanelBase {
             listOfUsers.addItem(user);
         }
         
-        root = new DefaultMutableTreeNode();
-        customNode = new DefaultMutableTreeNode("Custom");
+        root = new DefaultMutableTreeNode("NULL");
+        casualNode = new DefaultMutableTreeNode("Custom");
         marathonNode = new DefaultMutableTreeNode("Marathon");
         reactionNode = new DefaultMutableTreeNode("Reaction");
-        
-        setRoot(String.valueOf(listOfUsers.getSelectedItem()), false);
         treeModel = new DefaultTreeModel(root);
         highscoresTree = new JTree(treeModel);
         
@@ -152,50 +154,58 @@ public class HighscoresViewGui extends ViewPanelBase {
     public void setRoot(String newRoot, boolean reload) {
         root.removeAllChildren();
         root.setUserObject(newRoot);
-        root.add(customNode);
+        
+        root.add(casualNode);
+        for(Score score : controller.getUserScores(GameMode.CASUAL)) {
+            addScore(score, casualNode);
+        }
         root.add(marathonNode);
+        for(Score score : controller.getUserScores(GameMode.MARATHON)) {
+            addScore(score, marathonNode);
+        }
         root.add(reactionNode);
+        for(Score score : controller.getUserScores(GameMode.REACTION)) {
+            addScore(score, reactionNode);
+        }
         
         if(reload) {
             treeModel.reload();
         }
     }
     
+    /** Adds single score to defined node */
+    private void addScore(Score score, DefaultMutableTreeNode parent) {
+        
+        DefaultMutableTreeNode scoreNode = new DefaultMutableTreeNode(
+                String.format("Score %d", parent.getChildCount())
+        );
+        scoreNode.add(new DefaultMutableTreeNode(
+                String.format("Points: %d", score.getPoints()))
+        );
+        scoreNode.add(new DefaultMutableTreeNode(
+                String.format("Accuracy: %f", score.getAccuracy()))
+        );
+        scoreNode.add(new DefaultMutableTreeNode(
+                String.format("Time: %d ms", score.getTime()))
+        );
+        
+        treeModel.insertNodeInto(scoreNode, parent, 
+                parent.getChildCount());
+    }
+    
     /** Adds listeners to UI elements.
      */
     private void addListeners() {
-        this.backBtn.setActionCommand("backBtn");
-        this.listOfUsers.setActionCommand("listOfUsers");
-        
-        
-        
-        this.backBtn.addActionListener(controller);
-        this.listOfUsers.addItemListener((ItemEvent e) -> {
-            controller.changeElementUserName(String.valueOf(listOfUsers.getSelectedItem()));
-            
-            
+        this.backBtn.addActionListener((ActionEvent e) -> {
+            controller.endControl();
+        });
+        this.listOfUsers.addActionListener((ActionEvent e) -> {
+            String choosenName = String.valueOf(listOfUsers.getSelectedItem());
+            controller.changeElementUserData(choosenName);
+            setRoot(choosenName, true);
         });
     }
     
-    private void backButtonActionPerformed(ActionEvent evt) {
-        
-    }
-
-    
-    @Override
-    public void modelPropertyChange(final PropertyChangeEvent evt) {
-
-       if (evt.getPropertyName().equals(
-                  controller.ELEMENT_CURRENT_USER_NAME_PROP)) {
-           String newStringValue = evt.getNewValue().toString();
-           setRoot(newStringValue, true);
-       } else if (evt.getPropertyName().equals(
-                  controller.ELEMENT_USER_DATA)) {
-           
-       }
-    }
-        
-        
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -10,7 +10,7 @@ import pl.polsl.java.Bartlomiej.Szostek.controllers.UserXmlDB;
         version = 1.0,
         description = "Contains parameters for game controller."
 )
-public class GameParameters extends ModelBase {
+public class GameParameters {
     
     /**
      * Current user name.
@@ -61,10 +61,7 @@ public class GameParameters extends ModelBase {
      * @param newUserName User name.
      */
     public final void setUserName(String newUserName) {
-        String oldValue = this.userName;
         this.userName = newUserName;
-        
-        firePropertyChange("UserName", oldValue, newUserName);
     }
     
     /**
@@ -80,10 +77,7 @@ public class GameParameters extends ModelBase {
      * @param newMaxLength Max word length.
      */
     public final void setMaxWordLength(int newMaxLength) {
-        int oldValue = this.maxWordLength;
         this.maxWordLength = newMaxLength;
-        
-        firePropertyChange("MaxWordLength", oldValue, newMaxLength);
     }    
     
     /**
@@ -99,9 +93,6 @@ public class GameParameters extends ModelBase {
      * @param newNumberOfWords Number of words.
      */
     public final void setNumberOfWords(int newNumberOfWords) {
-        int oldValue = this.numberOfWords;
         this.numberOfWords = newNumberOfWords;
-        
-        firePropertyChange("NumberOfWords", oldValue, newNumberOfWords);
     }
 }

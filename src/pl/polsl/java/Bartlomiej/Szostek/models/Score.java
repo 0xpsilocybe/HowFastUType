@@ -9,7 +9,7 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         version = 1.0,
         description = "This model represents single score."
 )
-public class Score extends ModelBase {
+public class Score {
     /**
      * Points gained in this game.
      */
@@ -57,10 +57,7 @@ public class Score extends ModelBase {
      * @param points Points.
      */
     public final void setPoints(int points) {
-        int oldValue = this.points;
         this.points = points;
-        
-        firePropertyChange("Points", oldValue, points);
     }
     
     /**
@@ -76,10 +73,7 @@ public class Score extends ModelBase {
      * @param miliseconds New time in miliseconds.
      */
     public final void setTime(int miliseconds) {
-        int oldValue = this.timeInMiliseconds;
         this.timeInMiliseconds = miliseconds;
-        
-        firePropertyChange("timeInMiliseconds", oldValue, miliseconds);
     }    
     
     /**
@@ -95,10 +89,7 @@ public class Score extends ModelBase {
      * @param accuracy New accuracy.
      */
     public final void setAccuracy(double accuracy) {
-        double oldValue = this.accuracy;
         this.accuracy = accuracy;
-        
-        firePropertyChange("Accuracy", oldValue, accuracy);
     }
     
     @Override

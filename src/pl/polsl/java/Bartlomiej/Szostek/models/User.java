@@ -12,7 +12,7 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         version = 1.0,
         description = "This model represents user and his highscores table."
 )
-public class User extends ModelBase {
+public class User {
     /**
      * String representation of user nickname.
      */
@@ -54,10 +54,7 @@ public class User extends ModelBase {
      * @param newUserName New user name.
      */
     public final void setUserName(String newUserName) {
-        String oldValue = this.userName;
         this.userName = newUserName;
-        
-        firePropertyChange("userName", oldValue, newUserName);
     }    
     
     /**
@@ -73,10 +70,7 @@ public class User extends ModelBase {
      * @param scores Score list.
      */
     public final void setCasualScores(List<Score> scores) {
-        List<Score> oldValue = this.casualScoreList;
         this.casualScoreList = scores;
-        
-        firePropertyChange("casualScoreList", oldValue, scores);
     }
     
     /**
@@ -92,10 +86,7 @@ public class User extends ModelBase {
      * @param scores Score list.
      */
     public final void setMarathonScores(List<Score> scores) {
-        List<Score> oldValue = this.marathonScoreList;
         this.marathonScoreList = scores;
-        
-        firePropertyChange("marathonScoreList", oldValue, scores);
     }
     
     /**
@@ -111,9 +102,6 @@ public class User extends ModelBase {
      * @param scores Score list.
      */
     public final void setReactionScores(List<Score> scores) {
-        List<Score> oldValue = this.reactionScoreList;
         this.reactionScoreList = scores;
-        
-        firePropertyChange("reactionScoreList", oldValue, scores);
     }
 }

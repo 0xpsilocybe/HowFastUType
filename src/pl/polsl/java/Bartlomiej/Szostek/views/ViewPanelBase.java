@@ -48,15 +48,7 @@ public abstract class ViewPanelBase extends JPanel {
      * Path to background image.
      */
     private final File backgroundImg = new File("resources\\keyboard.jpg");
-        
-    /**
-     * Called by the controller when it needs to pass along a property change 
-     * from a model.
-     *
-     * @param event The property change event from the model
-     */
-    public abstract void modelPropertyChange(PropertyChangeEvent event);
-    
+       
     @Override
     public void paintComponent(Graphics g) {
         int xPos = 0;
