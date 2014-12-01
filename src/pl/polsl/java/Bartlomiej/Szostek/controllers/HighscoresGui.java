@@ -49,6 +49,29 @@ public class HighscoresGui extends ControllerBase {
         return arr;
     }
     
+    /**
+     * Gets current user name.
+     * @return Current user name.
+     */
+    public String getCurrentUserName() {
+        return currentUserData.getUserName();
+    }
+    
+    
+    /** 
+     * Clears highscores table of current user
+     * @return True if succeded, false otherwise 
+     */
+    public boolean clearHighscores() {
+        UserXmlDB manager = UserXmlDB.getInstance();
+        return manager.clearHighscores(getCurrentUserName());
+    }
+    
+    /**
+     * Retruns user mode highscores accorfing to mode param.
+     * @param mode Game mode.
+     * @return List of highscores from given mode.
+     */
     public final List<Score> getUserScores(GameMode mode) {
         switch(mode) {
             case CASUAL:
@@ -61,16 +84,14 @@ public class HighscoresGui extends ControllerBase {
         return new ArrayList<Score>();
     }
     
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(ELEMENT_USER_DATA.equals(e.getActionCommand())) {
-        
-        }
     }
 
     @Override
     public void getControl(ControllerBase controller) {
-        
     }
     
 }

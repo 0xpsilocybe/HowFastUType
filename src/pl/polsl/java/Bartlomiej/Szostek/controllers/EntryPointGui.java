@@ -1,4 +1,4 @@
-package pl.polsl.java.Bartlomiej.Szostek.views;
+package pl.polsl.java.Bartlomiej.Szostek.controllers;
 
 import java.awt.EventQueue;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;

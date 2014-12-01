@@ -2,10 +2,14 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 import pl.polsl.java.Bartlomiej.Szostek.controllers.MainController;
+import pl.polsl.java.Bartlomiej.Szostek.controllers.UserXmlDB;
+import pl.polsl.java.Bartlomiej.Szostek.models.InvalidUserNameException;
 
 @ClassPreamble(
         author = "Bartłomiej Szostek",
@@ -99,7 +103,33 @@ public class WelcomeScreenGui extends ViewPanelBase {
         this.existingUserBtn.setActionCommand(controller.ELEMENT_EXISTINGUSER_EVT);
         this.highscoresBtn.setActionCommand(controller.ELEMENT_HIGHSCORES_EVT);
         
-        this.newUserBtn.addActionListener(controller);
+        this.newUserBtn.addActionListener((ActionEvent e) -> {
+            String s = (String)JOptionPane.showInputDialog(
+                    this,
+                    "Type new user name:",
+                    "Add new user",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    null);
+            try {
+                if ((s != null) && (s.length() > 0)) {
+                    UserXmlDB manager = UserXmlDB.getInstance();
+                    manager.addUser(s);
+                    JOptionPane.showMessageDialog(this,
+                            "User added!",
+                            "Success",
+                            JOptionPane.INFORMATION_MESSAGE
+                            );
+                }
+            } catch(InvalidUserNameException ex) {
+                JOptionPane.showMessageDialog(this,
+                            String.format("User not added!%n%s", ex.getMessage()),
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE
+                            );
+            }
+        });
         this.existingUserBtn.addActionListener(controller);
         this.highscoresBtn.addActionListener(controller);
     }

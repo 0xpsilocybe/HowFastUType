@@ -4,24 +4,20 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.beans.PropertyChangeEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreePath;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 import pl.polsl.java.Bartlomiej.Szostek.controllers.HighscoresGui;
 import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
 import pl.polsl.java.Bartlomiej.Szostek.models.Score;
-import pl.polsl.java.Bartlomiej.Szostek.models.User;
 
 @ClassPreamble(
         author = "Bartłomiej Szostek",
@@ -59,14 +55,15 @@ public class HighscoresViewGui extends ViewPanelBase {
     /** Scrollbar for highscores tree. */
     private JScrollPane scrollbar;
     
+    /** Button to clear current user highscores table */
+    private JButton clearHighscoresBtn;
+    
     /** Button to go back to main view. */
     private JButton backBtn;
     
     /** Dropdown list displaying  */
     private JComboBox<String> listOfUsers;
     
-    /** User data */
-    private User user;
     
     /**
      * Initializes highscores view.
@@ -88,6 +85,7 @@ public class HighscoresViewGui extends ViewPanelBase {
         headerLbl = new JLabel();
         scrollbar = new JScrollPane();
         backBtn = new JButton();
+        clearHighscoresBtn = new JButton();
         scrollbar = new JScrollPane();
         listOfUsers = new JComboBox<String>(new DefaultComboBoxModel<String>());
         for(String user : controller.getUsersList()) {
@@ -102,7 +100,8 @@ public class HighscoresViewGui extends ViewPanelBase {
         highscoresTree = new JTree(treeModel);
         
         backBtn.setText("Return");
-        headerLbl.setText("<html><center><font size=+2 color=#FF0000><b>Hall of Fame</b></font>");
+        clearHighscoresBtn.setText("<html><center><font color=#FF0000>Clear highscores");
+        headerLbl.setText("<html><center><font size=+2 color=#FF0000><b>Hall of Fame");
         scrollbar.setViewportView(highscoresTree);
         
         setLayout(new FlowLayout());
@@ -125,8 +124,10 @@ public class HighscoresViewGui extends ViewPanelBase {
                                 .addGap(0, 10, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap((width-450)/2)
-                        .addComponent(scrollbar, 450, 450, 450)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)   
+                            .addComponent(scrollbar, 450, 450, 450)
+                            .addComponent(clearHighscoresBtn, 200, 200, 200)
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
@@ -141,6 +142,8 @@ public class HighscoresViewGui extends ViewPanelBase {
                 .addComponent(listOfUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollbar, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)    
+                .addComponent(clearHighscoresBtn)
                 .addGap(20)
                 .addComponent(backBtn)
                 .addContainerGap())
@@ -196,6 +199,37 @@ public class HighscoresViewGui extends ViewPanelBase {
     /** Adds listeners to UI elements.
      */
     private void addListeners() {
+        this.clearHighscoresBtn.addActionListener((ActionEvent e) -> {
+            Object[] options = {"Yea, sure.", "NO NO NO!!"};
+            
+            int choice = JOptionPane.showOptionDialog(this,
+                            String.format("Are you sure you want to clear %s highscores?",
+                                          controller.getCurrentUserName()),
+                            "Highscores",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE,
+                            null,
+                            options,
+                            options[1]
+            );
+            
+            if(choice == 0) {
+                if(controller.clearHighscores()) {
+                    setRoot(controller.getCurrentUserName(), true);
+                    JOptionPane.showMessageDialog(this,
+                            "Highscores table cleared.",
+                            "Highscores",
+                            JOptionPane.INFORMATION_MESSAGE
+                            );
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Highscores table NOT cleared.",
+                            "ERROR",
+                            JOptionPane.ERROR_MESSAGE
+                            );
+                }
+            }
+        });
         this.backBtn.addActionListener((ActionEvent e) -> {
             controller.endControl();
         });

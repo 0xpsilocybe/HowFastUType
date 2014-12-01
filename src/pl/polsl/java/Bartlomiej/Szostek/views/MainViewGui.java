@@ -2,8 +2,6 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 
 import java.awt.Color;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
 
 @ClassPreamble(
@@ -21,6 +19,7 @@ public class MainViewGui extends JFrame {
     public MainViewGui() {
         super("How f@st U typ3?");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultLookAndFeelDecorated(true);
         
         setSize(1024, 768);
         setBackground(Color.BLACK);
