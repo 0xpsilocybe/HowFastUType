@@ -1,5 +1,6 @@
 package pl.polsl.java.Bartlomiej.Szostek.controllers;
 
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
@@ -15,7 +16,7 @@ import pl.polsl.java.Bartlomiej.Szostek.views.ViewPanelBase;
         version = 1.1,
         description = "Abstract base for MVC controllers."
 )
-public abstract class ControllerBase implements PropertyChangeListener {
+public abstract class ControllerBase implements PropertyChangeListener, ActionListener {
     private ArrayList<ViewPanelBase> registeredViews;
     private ArrayList<ModelBase> registeredModels;
 

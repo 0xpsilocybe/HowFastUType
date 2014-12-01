@@ -2,6 +2,7 @@ package pl.polsl.java.Bartlomiej.Szostek.views;
 
 import java.awt.EventQueue;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
+import pl.polsl.java.Bartlomiej.Szostek.controllers.MainController;
 
 @ClassPreamble(
         author = "Bartłomiej Szostek",
@@ -11,9 +12,14 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         description = "This is where the program starts."
 )
 public class EntryPointGui {
-        public static void main(String[] args) {
-		EventQueue.invokeLater(() -> {
-                    new MainViewGui();
-                });
-	}
+    
+    /**
+     * Entry point of application.
+     * @param args Application arguments.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            MainController controller = new MainController();
+        });
+    }
 }

@@ -1,15 +1,12 @@
 package pl.polsl.java.Bartlomiej.Szostek.views;
 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.beans.PropertyChangeEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
+import pl.polsl.java.Bartlomiej.Szostek.controllers.MainController;
 
 @ClassPreamble(
         author = "Bartłomiej Szostek",
@@ -18,27 +15,13 @@ import pl.polsl.java.Bartlomiej.Szostek.annotations.ClassPreamble;
         version = 1.0,
         description = "Welcome screen"
 )
-public class WelcomeScreenGui extends JPanel {
+public class WelcomeScreenGui extends ViewPanelBase {
 
     /**
-     * Width of the panel.
+     * Controller of this view.
      */
-    private int width;
+    private MainController controller;
     
-    /**
-     * Height of the panel.
-     */
-    private int height;
-    
-    /**
-     * Logo image from resources.
-     */
-    private BufferedImage logo;
-    
-    /**
-     * Background image from resources.
-     */
-    private BufferedImage background;
     
     /**
      * Button launching action that shows new user account creation.
@@ -57,26 +40,26 @@ public class WelcomeScreenGui extends JPanel {
     
     /**
      * Initializes welcome screen view.
-     * @param width Width of the current panel.
-     * @param height Height of the current panel.
+     * @param controller Controller of this view.
      */
-    public WelcomeScreenGui(int width, int height) {
+    public WelcomeScreenGui(MainController controller) {
         super();
        
-        this.width = width;
-        this.height = height;
+        this.controller = controller;
         
-        File logoImg = new File("resources\\logo.jpg");
-        File backgroundImg = new File("resources\\keyboard.jpg");
+        initComponents();
+        addListeners();
         
-        try {
-            logo = ImageIO.read(logoImg);
-            background = ImageIO.read(backgroundImg);
-        } catch(IOException e) {
-            System.err.println("Error reading images");
-        }
-        
-        newUserBtn = new JButton("<html><center><font size=+2 color=#000000><b>New user</b></font>");        
+        setPreferredSize(new Dimension(width, height));
+        setVisible(true);
+        repaint();
+    }
+    
+    /**
+     * Initializes window components.
+     */
+    private void initComponents() {
+        newUserBtn = new JButton("<html><center><font size=+2 color=#FF0000><b>New user</b></font>");        
         existingUserBtn = new JButton("<html><center><font size=+2 color=#000000<b>Existing user</b></font>");   
         highscoresBtn = new JButton("<html><center><font size=+2 color=#000000><b>Hall of Fame</b></font>");
         
@@ -91,7 +74,7 @@ public class WelcomeScreenGui extends JPanel {
                         .addComponent(newUserBtn)
                         .addComponent(existingUserBtn)
                         .addComponent(highscoresBtn)
-                      )
+                      ) 
                     .addContainerGap(gap, gap))    
         );
         layout.setVerticalGroup(
@@ -107,21 +90,28 @@ public class WelcomeScreenGui extends JPanel {
         add(newUserBtn);
         add(existingUserBtn);
         add(highscoresBtn);
-        
-        setPreferredSize(new Dimension(width, height));
     }
     
-        @Override
-	public void paintComponent(Graphics g) {
-		int xPos = 0;
-                int yPos = 0;
-                Graphics2D g2d = (Graphics2D) g;
-                
-                yPos = (width - logo.getWidth()) / 2;
-		g2d.drawImage(logo, yPos, xPos, this);
-                
-                xPos = (logo.getHeight() + height - background.getHeight()) / 2;
-                yPos = (width - background.getWidth()) / 2;
-                g2d.drawImage(background, yPos, xPos, this);
-	}    
+    /**
+     * Initializes user interface events listeners.
+     */
+    private void addListeners() {
+        this.newUserBtn.setActionCommand(controller.getNewUserActionCommandName());
+        this.existingUserBtn.setActionCommand(controller.getExistingUserActionCommandName());
+        this.highscoresBtn.setActionCommand(controller.getHighscoresActionCommandName());
+        
+        this.newUserBtn.addActionListener(controller);
+        this.existingUserBtn.addActionListener(controller);
+        this.highscoresBtn.addActionListener(controller);
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }    
+
+    @Override
+    public void modelPropertyChange(PropertyChangeEvent event) {
+        
+    }
 }
