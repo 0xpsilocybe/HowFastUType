@@ -3,7 +3,6 @@ package pl.polsl.java.Bartlomiej.Szostek.controllers;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 import pl.polsl.java.Bartlomiej.Szostek.models.GameMode;
 import pl.polsl.java.Bartlomiej.Szostek.models.GameParameters;
 import pl.polsl.java.Bartlomiej.Szostek.models.RandomTextGenerator;
@@ -49,6 +48,7 @@ public class GameController extends ControllerBase {
             case CASUAL_MULTI:
             case MARATHON_MULTI:
             case REACTION_MULTI:
+                break;
         }        
     }
 
